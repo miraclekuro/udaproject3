@@ -1,4 +1,10 @@
 {
     "appService.defaultWebAppToDeploy": "/subscriptions/d2094a12-c9a7-4159-ab84-eb85760e48cd/microsoft.web/sites/subscriptions/d2094a12-c9a7-4159-ab84-eb85760e48cd/resourceGroups/project3/providers/Microsoft.Web/sites/udaproject3webapp",
-    "appService.deploySubpath": "web"
+    "appService.deploySubpath": "web",
+    "azureFunctions.deploySubpath": "function",
+    "azureFunctions.scmDoBuildDuringDeployment": true,
+    "azureFunctions.pythonVenv": ".venv",
+    "azureFunctions.projectLanguage": "Python",
+    "azureFunctions.projectRuntime": "~4",
+    "debug.internalConsoleOptions": "neverOpen"
 }

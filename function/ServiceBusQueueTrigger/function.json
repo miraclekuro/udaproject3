@@ -6,7 +6,7 @@
       "type": "serviceBusTrigger",
       "direction": "in",
       "queueName": "notification",
-      "connection": "udaproject3bus_SERVICEBUS"
+      "connection": "ServiceBusConnection"
     }
   ]
 }

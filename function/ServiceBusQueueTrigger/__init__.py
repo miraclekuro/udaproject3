@@ -26,12 +26,12 @@ def main(msg: func.ServiceBusMessage):
         )
 
         # TODO: Get attendees email and name
-        cur.execute("select first_name, last_name, email from attendee")
+        cur.execute("select first_name, email from attendee")
 
         # TODO: Loop through each attendee and send an email with a personalized subject
         attendees = cur.fetchall()
         for attendee in attendees: 
-            Mail('{},{},{}'.format({'admin@techconf.com'},{attendee[2]},{message_subject}))
+            Mail('{},{},{}'.format({'admin@techconf.com'},{attendee[1]},{message_subject}))
         
         # TODO: Update the notification table by setting the completed date and updating the status with the total number of attendees notified
         notification_sent_date = datetime.utcnow()

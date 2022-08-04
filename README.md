@@ -61,11 +61,27 @@ You will need to install the following locally:
 ## Monthly Cost Analysis
 Complete a month cost analysis of each Azure resource to give an estimate total cost using the table below:
 
-| Azure Resource | Service Tier | Monthly Cost |
-| ------------ | ------------ | ------------ |
-| *Azure Postgres Database* |     |              |
-| *Azure Service Bus*   |         |              |
-| ...                   |         |              |
+| Azure Resource            | Service Tier | Monthly Cost |
+| *Azure Postgres Database* | Basic        |     35.32    |
+| *Azure Service Bus*       | Basic        |     0.05     |
+| *Azure Functions*         | Consumption  |      0       |
+| *Azure App Service*       | Free         |      0       |
+| *Storage Account*         | Basic V1     |     52.2     |
+
+Refer to the image in screenshot folder for more details.
 
 ## Architecture Explanation
 This is a placeholder section where you can provide an explanation and reasoning for your architecture selection for both the Azure Web App and Azure Function.
+
+Azure App Service is a powerful web application hosting platform. Azure Functions, built on top of the App Service infrastructure, enables you to easily build serverless and event-driven compute workloads.
+
+This app is ligthweight and doesn't need a lot of computing power as well as the deployment is not too complicated. It also support both microservices and service bus. Azure App Service in Free tier is enough to run this app.
+
+PostgreSQL is an advanced, enterprise-class, and open-source relational database system. PostgreSQL supports both SQL (relational) and JSON (non-relational) querying.
+
+Advantages : 
+- Service Bus : Data is transferred between different applications and services using messages.Flow : create a client from Service Bus connection string, c a service bus message, open a single connection, send the supplied message and close connection
+
+- Azure Function : It is triggered by Service Bus message. Decrypt message body and use SendGrid to send email with that subject and message.
+
+Disadvantage : Need to set timeout for api after a given amount of time or your program will hang indefinitely

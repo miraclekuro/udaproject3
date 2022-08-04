@@ -35,7 +35,7 @@ def main(msg: func.ServiceBusMessage):
         
         # TODO: Update the notification table by setting the completed date and updating the status with the total number of attendees notified
         notification_sent_date = datetime.utcnow()
-        notification_status = 'Total number of attendees notified: {}'.format(len(attendees))
+        notification_status = "Notified to {} attendees".format(len(attendees))
         cur.execute("update notification set status = '{}', completed_date = '{}' where id = {};".format(notification_status, notification_sent_date, notification_id))
         
         connection.commit()

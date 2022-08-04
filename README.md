@@ -77,11 +77,8 @@ Azure App Service is a powerful web application hosting platform. Azure Function
 
 This app is ligthweight and doesn't need a lot of computing power as well as the deployment is not too complicated. It also support both microservices and service bus. Azure App Service in Free tier is enough to run this app.
 
-PostgreSQL is an advanced, enterprise-class, and open-source relational database system. PostgreSQL supports both SQL (relational) and JSON (non-relational) querying.
+PostgreSQL is an advanced, enterprise-class, and open-source relational database system. PostgreSQL supports both SQL (relational) and JSON (non-relational) querying. Small data size and not many transactions so Basic Tier is enough
 
-Advantages : 
-- Service Bus : Data is transferred between different applications and services using messages.Flow : create a client from Service Bus connection string, c a service bus message, open a single connection, send the supplied message and close connection
+Service Bus : Data is transferred between different applications and services using messages.Flow : create a client from Service Bus connection string, create a service bus message, open a single connection, send the supplied message and close connection
 
-- Azure Function : It is triggered by Service Bus message. Decrypt message body and use SendGrid to send email with that subject and message.
-
-Disadvantage : Need to set timeout for api after a given amount of time or your program will hang indefinitely
+Azure Function : It is triggered by Service Bus message. Decrypt message body and use SendGrid to send email with that subject and message. In this case, Consumption Tier is enough.

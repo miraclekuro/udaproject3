@@ -82,3 +82,17 @@ PostgreSQL is an advanced, enterprise-class, and open-source relational database
 Service Bus : Data is transferred between different applications and services using messages.Flow : create a client from Service Bus connection string, create a service bus message, open a single connection, send the supplied message and close connection
 
 Azure Function : It is triggered by Service Bus message. Decrypt message body and use SendGrid to send email with that subject and message. In this case, Consumption Tier is enough.
+
+--- Change Request ---
+
+Drawbacks of Previous architecture : 
+- Based on scenario there are 1000 attendees the user must wait on the notification page until all attendees are notified. Need tell request library to stop waiting for response after a given amount of time by passing a number to "timeout" parameter. If forget or not set timeout when call api so can make your program to hang indefinitely.If no "timeout" is specificed explicitly, requests do not time out. It make users like endless time. Hence to resolve the above-mentioned timeout issue, we use the Azure function.
+
+Advantages of the current architecture: 
+- Azure function is used for decoupling the web app for sending mail.The web app triggers the queue and the function fetches the notification id from the queue and processes the mail triggering function. After that it is triggered by Service Bus message.Decode message body to get message and then use Sengrid to send mail.
+
+- Service Bus is used for decoupling the web app for sending mail. Create a client from Service Bus connection string, create a service bus message, open a single connection, send the supplied message and close connection
+
+- This app is ligthweight and doesn't need a lot of computing power. so it make sense to deploy via App service. Function app support microservices as well as runs the bakcground job Service Bus very well
+
+- PostgreSQL supports both SQL (relational) and JSON (non-relational) querying.

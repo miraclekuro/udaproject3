@@ -71,6 +71,11 @@ def notification():
             ## TODO: Refactor This logic into an Azure Function
             ## Code below will be replaced by a message queue
             #################################################
+
+            notification_id = notification.id
+            msg = Message(str(notification_id))
+            queue_client.send(msg)
+            
             attendees = Attendee.query.all()
 
             for attendee in attendees:
